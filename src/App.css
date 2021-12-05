@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,20 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+.newcon {
+  text-align: left;
 }
