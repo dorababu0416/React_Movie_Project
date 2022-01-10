@@ -22,6 +22,8 @@
 //   );
 // }
 
+
+
 // export default App;
 
 import "./App.css";
@@ -107,6 +109,10 @@ function Movie({poster,name,rating,summary}){
     <p className="movie-summary">{summary}</p>
     <Counter />
   </div>);
+}
+
+function Useless(){
+  return(<div className="useless"></div>);
 }
 
 
