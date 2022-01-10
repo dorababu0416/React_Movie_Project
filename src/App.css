@@ -38,8 +38,8 @@
 } */
 
 .App {
-  font-family: sans-serif;
-  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  /* text-align: center; */
 }
 
 .image {
@@ -51,4 +51,52 @@
 
 .newcon {
   text-align: left;
+}
+
+.movie-poster{
+  height: 500px;
+  width: 340px;
+  object-fit: cover;
+}
+
+.movie-specs{
+  display: flex;
+  align-items: baseline; 
+  justify-content: space-between;
+}
+
+.movie-name{
+  font-size: 24px;
+  margin: 8px 0px;
+}
+
+.movie-container{
+  /* background-color: red; */
+  width: 340px;
+}
+
+.movie-rating{
+  margin: 8px 0px;
+}
+
+body{
+  margin: 24px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.movie-list{
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.counter-container{
+  display: flex;
+  width: 340px;
+  justify-content: space-between;
+}
+
+.counter-container button{
+  font-size: 20px;
 }
