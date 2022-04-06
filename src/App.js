@@ -1,22 +1,25 @@
 import "./App.css";
 import { useState } from "react";
 import { Routing } from "./Routing";
-import { Initial_value } from "./Initial_value";
-
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
 
 export default function App() {
-  const styles = { margin: "0px 5px 10px 0px" };
-  const [moviename, setmoviename] = useState("");
-  const [poster, setposter] = useState("");
-  const [rating, setrating] = useState("");
-  const [summary, setsummary] = useState("");
-  const [trailer, settrailer] = useState("");
-  const [movie, setmovie] = useState(Initial_value);
-  const resetvalues = () => { setmoviename(""); setposter(""); setrating(""); setsummary(""); settrailer("")};
-  const click1 = () => { setmovie([...movie, { name: moviename, poster: poster, rating: rating, summary: summary, trailer: `https://www.youtube.com/embed/${trailer}` }]); resetvalues() };
+  const [mode, setmode]=useState("dark");
+  const theme = createTheme({
+    palette: {
+      mode: mode,
+    },
+  });
+  
   return (
-    <Routing styles={styles} trailer={trailer} settrailer={settrailer} moviename={moviename} setmoviename={setmoviename} poster={poster} setposter={setposter} rating={rating} setrating={setrating} summary={summary} setsummary={setsummary} movie={movie} setmovie={setmovie} click1={click1}></Routing>
+    <ThemeProvider theme={theme}>
+      <Paper elevation={3} style={{borderRadius:"0px", minHeight:"100vh"}}>
+    <Routing mode={mode} setmode={setmode}></Routing>
+      </Paper>
+    </ThemeProvider>
     );
 }
 
 
+ // const click1 = () => { setmovie([...movie, { name: moviename, poster: poster, rating: rating, summary: summary, trailer: `https://www.youtube.com/embed/${trailer}` }]); resetvalues(); history.push("/displaymovielist")};

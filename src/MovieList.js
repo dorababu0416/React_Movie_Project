@@ -1,16 +1,34 @@
 import { Movie } from "./Movie";
 import { useHistory } from "react-router-dom";
-import Button from '@mui/material/Button';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
+import { useState, useEffect } from "react";
 
-export function MovieList({ movie }) {
+// Function to display the movie list
+export function MovieList() {
   const history=useHistory();
-  return (<div>
-    <Button style={{margin:"15px", float:"right"}} variant="outlined" onClick={()=>history.push("/displaymovielist/add")}>Add New movies</Button>
-    <Button style={{margin:"15px", float:"right"}} variant="outlined" onClick={()=>history.push("/displaymovielist/update")}>Update Movie</Button>
-    <Button style={{margin:"15px", float:"right"}} variant="outlined" onClick={()=>history.push("/displaymovielist/delete")}>Delete Movie</Button>
-    <section style={{clear:"both"}} className="movie-list">
-    {movie.map(({
-      name, poster, summary, rating, trailer
-    },index) => <Movie key={index} trailer={trailer} rating={rating} name={name} summary={summary} poster={poster} index={index}/>)}
+  const [movies,setmovies]=useState([]);
+
+  const getData=()=>{async function getmoviedata(){
+    const data= await fetch("https://622afbad14ccb950d22b18c9.mockapi.io/movies", {method: "GET",});
+  const moviedata= await data.json();
+  setmovies(moviedata);
+  };
+  getmoviedata();}
+  useEffect(getData,[]);
+  return(<div>
+    <section className="movie-list">
+      {/* For every movie the 'Movie' component is called with the data of a particular movie */}
+    {movies.map(({
+      name, poster, summary, rating, trailer, id
+    },index, movies) => <Movie key={index} trailer={trailer} rating={rating} name={name} summary={summary} poster={poster} index={index} id={id}
+    editbutton={<IconButton aria-label="edit" title="edit" onClick={()=>history.push(`/displaymovielist/edit/${id}`)} color="secondary" size="small">
+    <EditIcon fontSize="inherit" />
+  </IconButton>}
+    deletebutton={<IconButton aria-label="delete" onClick={()=>{fetch(`https://622afbad14ccb950d22b18c9.mockapi.io/movies/${movies[index].id}`, {method: "Delete",}).then(()=>{getData();})}} title="delete" color="error" size="small">
+    <DeleteIcon fontSize="inherit" />
+  </IconButton>}
+     />)}
   </section></div>);
 }

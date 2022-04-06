@@ -3,6 +3,13 @@
   /* text-align: center; */
 }
 
+body{
+  /* background-image: url("https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?size=626&ext=jpg");
+  background-size: cover; */
+  /* background-color: whitesmoke;
+  background-blend-mode: lighten; */
+}
+
 .movie-poster{
   height: 500px;
   width: 380px;
@@ -23,6 +30,7 @@
 .movie-container{
   /* background-color: red; */
   width: 380px;
+  height: min-content;
 }
 
 .movie-rating{
@@ -30,7 +38,6 @@
 }
 
 body{
-  margin: 24px;
   font-family: 'Poppins', sans-serif;
 }
 
